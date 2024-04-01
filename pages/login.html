@@ -1,0 +1,30 @@
+{%extends "components/layout.html"%} {%block sub_title%}Homepage{%endblock%}
+{%block content%} {%include "components/navbar.html" %}
+
+<form action="/signin" method="post">
+  {% csrf_token %}
+  <div class="log">
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="username" id="uname" />
+    <br /><br />
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter password" name="psw" id="pass" />
+    <br /><br />
+    <button type="submit"><b>Login</b></button>
+    <br /><br />
+    <input
+      type="checkbox"
+      checked="checked"
+      name="remember"
+      style="margin-bottom: 15px"
+    /><b>Remember me</b>
+  </div>
+
+  <p>Don't have an account?<a href="signup.html">Sign Up Here</a></p>
+
+  <div class="container" style="background-color: #f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+{%endblock%}

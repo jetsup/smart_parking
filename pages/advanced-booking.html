@@ -1,0 +1,87 @@
+{%extends "components/layout.html"%}
+{%block sub_title%}Homepage{%endblock%}
+{%block content%}
+
+{%include "components/navbar.html" %}
+
+<div class="container">
+        <h2>Parking Slot Booking</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <div class="vehicle-details">
+                <input type="text" placeholder="Vehicle Number Plate">
+                <select>
+                    <option value="" disabled selected>Vehicle Type</option>
+                    <option value="car">Car</option>
+                    <option value="motorcycle">Motorcycle</option>
+                    <option value="truck">Truck</option>
+                    <!-- Add more vehicle types as needed -->
+                </select>
+            </div>
+            <input type="date" placeholder="Select Date">
+            <div class="calendar">
+                <input type="time" placeholder="Select Start Time">
+                <i class="far fa-calendar-alt"></i>
+            </div>
+            <input type="number" placeholder="Duration (in hours)">
+            <select>
+                <option value="" disabled selected>Select Slot</option>
+                <option value="slot1">Slot 1</option>
+                <option value="slot2">Slot 2</option>
+                <option value="slot3">Slot 3</option>
+                <!-- Add more slot options as needed -->
+            </select>
+            <div class="payment-details">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" placeholder="Enter your card number">
+                <div class="exp-date">
+                    <input type="number" placeholder="MM">
+                    <input type="number" placeholder="YY">
+                </div>
+                <label for="cvv">CVV:</label>
+                <input type="number" id="cvv" placeholder="Enter CVV">
+                <label for="card-holder">Card Holder Name:</label>
+                <input type="text" id="card-holder" placeholder="Enter card holder name">
+                <button type="button" class="btn-pay">Pay Now</button>
+            </div>
+        </form>
+    <div id="subscribe">
+        <h2>SUBSCRIPTION PLAN</h2>
+        <form action="">
+            <label for="pln">Subscription Plan</label>
+            <select name="" id="">
+                <option value="Basic">Basic</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Premium">Premium</option>
+            </select>
+            <select>
+                <option value="" disabled selected>Vehicle Type</option>
+                <option value="car">Car</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="truck">Truck</option>
+                <!-- Add more vehicle types as needed -->
+            </select>
+            <select>
+                <option value="" disabled selected>Select Slot</option>
+                <option value="slot1">Slot 1</option>
+                <option value="slot2">Slot 2</option>
+                <option value="slot3">Slot 3</option>
+                <!-- Add more slot options as needed -->
+            </select>
+            <div class="payment-details">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" placeholder="Enter your card number">
+                <div class="exp-date">
+                    <input type="number" placeholder="MM">
+                    <input type="number" placeholder="YY">
+                </div>
+                <label for="cvv">CVV:</label>
+                <input type="number" id="cvv" placeholder="Enter CVV">
+                <label for="card-holder">Card Holder Name:</label>
+                <input type="text" id="card-holder" placeholder="Enter card holder name">
+                <button type="button" class="btn-pay">Pay Now</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}
