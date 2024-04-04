@@ -60,14 +60,20 @@ class User(AbstractUser):
     profile_image = models.ImageField(
         upload_to="profile_images/", null=True
     )  # FIXME: Not good
-    user_type = models.ForeignKey(UserTypes, on_delete=models.CASCADE, default=2)
+    user_type = models.IntegerField(default=2)
     rfid = models.CharField(max_length=20, unique=True)
-    parking_frequency = models.IntegerField()
+    parking_frequency = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.email + " " + self.rfid
+        return str(self.email) + " " + self.rfid
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
 
     def has_perm(self, perm, obj=None):
         return True
@@ -78,6 +84,10 @@ class User(AbstractUser):
     @property
     def is_superuser(self):
         return self.is_staff
+
+    @is_superuser.setter
+    def is_superuser(self, value):
+        self.is_staff = value
 
     @property
     def is_authenticated(self):
@@ -125,6 +135,7 @@ class Vehicles(models.Model):
 class Slots(models.Model):
     slot = models.IntegerField(unique=True)
     occupied = models.BooleanField(default=False)
+    occupied_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
 
